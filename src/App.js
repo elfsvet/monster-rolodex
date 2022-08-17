@@ -1,13 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-
+// component ui representation of 
 function App() {
+  // this is function that returning the html code
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+         Hey I'm stepan
         </p>
         <a
           className="App-link"
