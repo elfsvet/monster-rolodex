@@ -34,17 +34,30 @@ class App extends Component {
         )
       );
   }
+  // method
   // render - runs second what to show initial ui mount on the DOM
   filterMonsters(element) {
     return console.log(this.state.monsters.includes('l'));
   }
+  // method initialized
+  onSearchChange = (e) => {
+    // filter true and false filter
+    const searchField = e.target.value.toLowerCase();
+    this.setState(
+      () => {
+        return { searchField };
+      },
+      () => {}
+    );
+  };
 
   render() {
     console.log('render');
-
-    const filteredMonsters = this.state.monsters.filter((monster) => {
+    const { monsters, searchField } = this.state;
+    const { onSearchChange } = this;
+    const filteredMonsters = monsters.filter((monster) => {
       //  if the name includes the search string return the monster to the array
-      return monster.name.toLowerCase().includes(this.state.searchField);
+      return monster.name.toLowerCase().includes(searchField);
     });
 
     return (
@@ -53,16 +66,8 @@ class App extends Component {
           className='search-box'
           type='search'
           placeholder='search monsters'
-          onChange={(e) => {
-            // filter true and false filter
-            const searchField = e.target.value.toLowerCase();
-            this.setState(
-              () => {
-                return { searchField };
-              },
-              () => {}
-            );
-          }}
+          // anonymous function moved to a method for app
+          onChange={onSearchChange}
         />
         {filteredMonsters.map((monster) => {
           return (
