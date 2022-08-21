@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 import CardList from './components/card-list/card-list.component';
-import SearchBox from './components/search-box/search-box.component'
+import SearchBox from './components/search-box/search-box.component';
 // component ui representation of
 class App extends Component {
   // this is function that returning the html code
@@ -37,11 +37,9 @@ class App extends Component {
   onSearchChange = (e) => {
     // filter true and false filter
     const searchField = e.target.value.toLowerCase();
-    this.setState(
-      () => {
-        return { searchField };
-      }
-    );
+    this.setState(() => {
+      return { searchField };
+    });
   };
 
   render() {
@@ -56,8 +54,13 @@ class App extends Component {
 
     return (
       <div className='App'>
-      <SearchBox onChangeHandler={this.onSearchChange} placeholder={'search monsters'} className={'search-box'}/>
-        <CardList monsters={filteredMonsters}/>
+      <h1 className='app-title'>Monsters Rolodex</h1>
+        <SearchBox
+          className='monsters-search-box'
+          onChangeHandler={onSearchChange}
+          placeholder={'search monsters'}
+        />
+        <CardList monsters={filteredMonsters} />
       </div>
     );
   }
